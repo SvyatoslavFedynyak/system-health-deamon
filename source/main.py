@@ -1,4 +1,5 @@
-import modules.work_manager as work_manager
+import modules.manager as manager
+import modules.logger as logger
 
-manager = work_manager.work_manager()
+manager = manager.manager()
 manager.echo()
