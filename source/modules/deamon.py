@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import atexit
 
 DEFAULT_STD = '/dev/null'
 
@@ -44,9 +45,47 @@ class AbstractDeamon():
 
         sys.stdout.flush()
         sys.stderr.flush()
-        sys_input = open(self.stdin, 'r')
-        sys_output = open(self.stdout, 'a+')
-        sys_error = open(self.stderr, 'a+', 0)
-        os.dup2(sys_input.fileno(), sys.stdin.fileno())
-        os.dup2(sys_output.fileno(), sys.stdout.fileno())
-        os.dup2(sys_error.fileno(), sys.stderr.fileno())
+        with open(self.stdin, 'r') as sys_input:
+            os.dup2(sys_input.fileno(), sys.stdin.fileno())
+        with open(self.stdout, 'a+') as sys_output:
+            os.dup2(sys_output.fileno(), sys.stdout.fileno())
+        with open(self.stderr, 'a+', 0) as sys_error:
+            os.dup2(sys_error.fileno(), sys.stderr.fileno())
+
+        atexit.register(self.delpid)
+        pid = str(os.getpid())
+        with open(self.pidfile, 'w+') as pidf:
+            pidf.write("{0}\n".format(pid))
+
+    def delpid(self):
+        '''Removes PID file'''
+        os.remove(self.pidfile)
+
+    def start(self):
+        '''Starts the deamon'''
+        try:
+            with open(self.pidfile, 'r') as pidf:
+                pid = int(pidf.read().strip())
+        except IOError:
+            pid = None
+
+        if pid:
+            message = "pidfile {0} already exist. Daemon already running?\n"
+            sys.stderr.write(message.format(self.pidfile))
+            sys.exit(1)
+
+        self.deamonize()
+        self.run()
+
+    def stop(self):
+        """Stop the daemon"""
+        try:
+            pf = file(self.pidfile,'r')
+            pid = int(pf.read().strip())
+        except IOError:
+            pid = None
+
+        if not pid:
+            message = "pidfile {0} does not exist. Daemon not running?\n"
+            sys.stderr.write(message.format(self.pidfile))
+            return
