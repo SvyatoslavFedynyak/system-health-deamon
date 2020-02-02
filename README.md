@@ -1,7 +1,7 @@
 # system-health-deamon
 Linux deamon, written on python that works with system health
 
-Deamon requirements (due to PRP 3143):
+Deamon requirements (due to PEP 3143):
 
 - Close all open file descriptors.
 - Change current working directory.
@@ -11,8 +11,10 @@ Deamon requirements (due to PRP 3143):
 - Ignore terminal I/O signals.
 - Disassociate from control terminal.
 - Don’t reacquire a control terminal.
-- Correctly handle the following circumstances:
-* Started by System V init process.
+
+Correctly handle the following circumstances:
+
+* Started by System V init/systemd process.
 * Daemon termination by SIGTERM signal.
 * Children generate SIGCLD signal.
 
