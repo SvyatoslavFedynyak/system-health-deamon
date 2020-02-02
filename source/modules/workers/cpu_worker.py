@@ -1,14 +1,11 @@
-class CpuWorker:
+import modules.workers.worker as worker
+
+class CpuWorker(worker.worker):
     '''Class for CPU worker'''
 
-    functions = []
-
-    def __init__(self):
-        pass
-
-    def run(self):
+    async def run(self):
         '''Invokes required functions and returns report'''
-        functions.append(get_cpu_load)
+        return get_cpu_load()
 
 def get_cpu_load():
     '''Returns CPU load in %'''
