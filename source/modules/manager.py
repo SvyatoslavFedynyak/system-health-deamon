@@ -14,7 +14,7 @@ class Manager:
         ''' Create appropriate workers and put them in list'''
         self.workers.append(cpu_worker.CpuWorker())
 
-    def run(self):
+    async def run(self):
         '''Run all workers async, get report from result and add put it into dict'''
         for worker in self.workers:
             # workers 
