@@ -1,13 +1,15 @@
 import modules.workers.worker as worker
 
-class CpuWorker(worker.worker):
+class CpuWorker(worker.Worker):
     '''Class for CPU worker'''
 
     name = 'CPU'
 
-    async def run(self):
+    def run(self):
         '''Invokes required functions and returns report'''
-        return await get_cpu_load()
+        return {
+            self.name : get_cpu_load()
+        }
 
 def get_cpu_load():
     '''Returns CPU load in %'''

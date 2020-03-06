@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "env/bin/python",
+    "python.autoComplete.extraPaths": [
+        "modules",
+        "modules/workers"
+     ],
+     "python.linting.pylintArgs": [
+        "--init-hook='import sys;'",
+        "--disable=F0401"
+    ]
+}

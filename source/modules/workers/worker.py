@@ -1,6 +1,6 @@
-import asyncio
+class Worker:
+    '''Class for abstract worker'''
 
-class worker:
     def __init__(self):
         pass
 
@@ -8,5 +8,6 @@ class worker:
     def functions(self):
         '''List of worksers functions'''
 
-    async def run(self):
-        '''Overridde this in specialized workers'''
+    def run(self):
+        '''Overridde this in specialized workers
+        Should return pair of worker_name:string_report'''
