@@ -9,7 +9,7 @@ def CPU_currentTimes():
     for idx, cpu in enumerate(raw):
         cpu_dict['CPU'] = str(idx)
         cpu_dict['user'] = str(cpu.user)
-        cpu_dict['sysem'] = str(cpu.system)
+        cpu_dict['system'] = str(cpu.system)
         cpu_dict['nice'] = str(cpu.nice)
         cpu_dict['idle'] = str(cpu.idle)
         cpu_dict['iowait'] = str(cpu.iowait)

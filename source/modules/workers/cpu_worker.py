@@ -13,8 +13,7 @@ class CpuWorker(worker.Worker):
     def compose_report(self, reports):
         '''Get list of func's reports and compose worker's report (string) from them'''
         report = ''
-        json_data = json.dumps(reports['CPU_currentTimes'])
-        parsed_json = json.load(json_data)
+        parsed_json = json.loads(reports['CPU_currentTimes'])
         report += 'CPU times:\n'
         for idx, cpu in enumerate(parsed_json):
             report += '--- CPU{0} ---\n user time: {1}\nsystem time: {2}'.format(str(idx), cpu['user'], cpu['system'])
