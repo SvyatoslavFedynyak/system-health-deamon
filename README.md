@@ -1,7 +1,77 @@
-# system-health-deamon
-Linux deamon, written on python that works with system health
+# system-health-daemon
+Linux daemon, written on python that works with system health
 
-Deamon requirements (due to PEP 3143):
+## Content
+
+- [Daemon requirements](#daemon requirements)
+- [Reports specification](#Reports specification)
+
+### Reports specification
+
+Application operates 3 types of json reports:
+
+- [function's report](#function's report)
+- [worker's report](#worker's report)
+- [daemon's report](#daemon's report)
+
+#### function's report
+
+Structure:
+```json
+{
+    "name": "$function_name",
+    "datetime" : "$compose_datetime",
+    [
+        {
+            some data...
+        },
+        {
+            ...
+        },
+        ...
+    ]
+}
+```
+
+#### worker's report
+
+Structure:
+```json
+{
+    "name": "$worker_name",
+    "datetime" : "$compose_datetime",
+    [
+        {
+            some data...
+        },
+        {
+            ...
+        },
+        ...
+    ]
+}
+```
+
+#### daemon's report
+
+Structure:
+```json
+{
+    "name": "$worker_name",
+    "datetime" : "$compose_datetime",
+    [
+        {
+            some data...
+        },
+        {
+            ...
+        },
+        ...
+    ]
+}
+```
+
+### daemon requirements (due to PEP 3143):
 
 - Close all open file descriptors.
 - Change current working directory.
@@ -14,12 +84,12 @@ Deamon requirements (due to PEP 3143):
 
 Correctly handle the following circumstances:
 
-* Started by System V init/systemd process.
-* Daemon termination by SIGTERM signal.
-* Children generate SIGCLD signal.
+- Started by System V init/systemd process.
+- Daemon termination by SIGTERM signal.
+- Children generate SIGCLD signal.
 
 
 
 ## Primary architecture
 
-![Primary architecture](https://github.com/SvyatoslavFedynyak/system-health-deamon/blob/master/images/deamon-arch.jpg)
+![Primary architecture](https://github.com/SvyatoslavFedynyak/system-health-daemon/blob/master/images/daemon-arch.jpg)
