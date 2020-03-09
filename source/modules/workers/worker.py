@@ -1,12 +1,20 @@
+import re
+
+
 class Worker:
     '''Class for abstract worker'''
 
-    def __init__(self):
-        pass
+    name = ''
+    funcs = []
+    func_reports = {}
+    worker_report = ''
 
-    @property
-    def functions(self):
-        '''List of worksers functions'''
+    def get_funcs(self, module):
+        '''Get worker's functions from modules'''
+        for item in dir(module):
+            func = getattr(module, item)
+            if callable(func) and re.match('^{0}'.format(self.name), func.__name__):
+                self.funcs.append(func)
 
     def run(self):
         '''Overridde this in specialized workers
