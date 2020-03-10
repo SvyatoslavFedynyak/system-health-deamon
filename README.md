@@ -10,11 +10,11 @@ Linux daemon, written on python that works with system health
 
 Application operates 3 types of json reports:
 
-- [function's report](#function's report)
-- [worker's report](#worker's report)
-- [daemon's report](#daemon's report)
+- [function](#function report)
+- [worker](#worker report)
+- [daemon](#daemon report)
 
-#### function's report
+#### function report
 
 Structure:
 ```json
@@ -33,7 +33,7 @@ Structure:
 }
 ```
 
-#### worker's report
+#### worker report
 
 Structure:
 ```json
@@ -52,7 +52,7 @@ Structure:
 }
 ```
 
-#### daemon's report
+#### daemon report
 
 Structure:
 ```json
@@ -92,4 +92,4 @@ Correctly handle the following circumstances:
 
 ## Primary architecture
 
-![Primary architecture](https://github.com/SvyatoslavFedynyak/system-health-daemon/blob/master/images/daemon-arch.jpg)
+![Primary architecture](https://github.com/SvyatoslavFedynyak/system-health-deamon/blob/master/images/deamon-arch.jpg)
