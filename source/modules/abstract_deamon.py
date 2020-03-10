@@ -56,12 +56,14 @@ class AbstractDeamon():
         with open(self.pidfile, 'w+') as pidf:
             pidf.write("{0}\n".format(pid))
 
-    def delpid(self):def restart(self):
+    def delpid(self):
+        '''Removes PID file'''
+        os.remove(self.pidfile)
+
+    def restart(self):
         """ Restart the deamon. """
         self.stop()
         self.start()
-        '''Removes PID file'''
-        os.remove(self.pidfile)
 
     def start(self):
         '''Starts the deamon'''
@@ -82,7 +84,7 @@ class AbstractDeamon():
     def stop(self):
         """Stop the daemon"""
         try:
-            pf = file(self.pidfile,'r')
+            pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
         except IOError:
             pid = None
@@ -94,19 +96,14 @@ class AbstractDeamon():
         
         try:
             while 1:
-                os.kill(pid, SIGTERM)
+                os.kill(pid, 'SIGTERM')
                 time.sleep(0.1)
         except OSError as err:
             if "No such process" in err.strerror and os.path.exists(self.pidfile):
                     os.remove(self.pidfile)
             else:
-                print str(err)
-                    sys.exit(1)
-
-    def restart(self):
-        """ Restart the deamon. """
-        self.stop()
-        self.start()
+                print(str(err))
+                sys.exit(1)
 
     def run(self):   
         ''' This method should be restarted in deamon classes '''

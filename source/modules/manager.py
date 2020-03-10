@@ -1,12 +1,11 @@
 import modules.functions.cpu_functions as cpu_functions
-import modules.workers.worker as worker
+import modules.worker as worker
 import datetime
 import json
 import asyncio
 
 
 class Manager:
-
     ''' Class for workers manager'''
 
     workers = []

@@ -4,7 +4,7 @@ import datetime
 
 
 class Worker:
-    '''Class for abstract worker'''
+    '''Class for worker'''
 
     name = ''
     funcs = []
