@@ -1,11 +1,15 @@
 import psutil
 import json
+import datetime
 
 
 def CPU_currentTimes():
     raw = psutil.cpu_times(True)
-    raw_result = []
+    raw_result = {}
     cpu_dict = {}
+    raw_result['name'] = 'CPU_currentTimes'
+    raw_result['datetime'] = str(datetime.datetime.now())
+    raw_result['data'] = []
     for idx, cpu in enumerate(raw):
         cpu_dict['CPU'] = str(idx)
         cpu_dict['user'] = str(cpu.user)
@@ -18,5 +22,5 @@ def CPU_currentTimes():
         cpu_dict['steal'] = str(cpu.steal)
         cpu_dict['guest'] = str(cpu.guest)
         cpu_dict['guest_nice'] = str(cpu.guest_nice)
-        raw_result.append(cpu_dict.copy())
+        raw_result['data'].append(cpu_dict.copy())
     return json.dumps(raw_result, indent='\t')
