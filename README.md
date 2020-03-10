@@ -3,18 +3,24 @@ Linux daemon, written on python that works with system health
 
 ## Content
 
-- [Daemon requirements](#daemon requirements)
-- [Reports specification](#Reports specification)
+- [system-health-daemon](#system-health-daemon)
+  - [Content](#content)
+  - [Reports specification](#reports-specification)
+    - [Function report](#function-report)
+    - [Worker report](#worker-report)
+    - [Daemon report](#daemon-report)
+  - [Daemon requirements (due to PEP 3143):](#daemon-requirements-due-to-pep-3143)
+  - [Primary architecture](#primary-architecture)
 
-### Reports specification
+## Reports specification
 
 Application operates 3 types of json reports:
 
-- [function](#function report)
-- [worker](#worker report)
-- [daemon](#daemon report)
+- [Function report](#function-report)
+- [Worker report](#worker-report)
+- [Daemon report](#daemon-report)
 
-#### function report
+### Function report
 
 Structure:
 ```json
@@ -33,7 +39,7 @@ Structure:
 }
 ```
 
-#### worker report
+### Worker report
 
 Structure:
 ```json
@@ -52,7 +58,7 @@ Structure:
 }
 ```
 
-#### daemon report
+### Daemon report
 
 Structure:
 ```json
@@ -71,7 +77,7 @@ Structure:
 }
 ```
 
-### daemon requirements (due to PEP 3143):
+## Daemon requirements (due to PEP 3143):
 
 - Close all open file descriptors.
 - Change current working directory.
