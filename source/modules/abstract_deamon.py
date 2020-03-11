@@ -5,6 +5,7 @@ import atexit
 
 DEFAULT_STD = '/dev/null'
 
+
 class AbstractDeamon():
     '''Class for main deamon process'''
 
@@ -93,17 +94,17 @@ class AbstractDeamon():
             message = "pidfile {0} does not exist. Daemon not running?\n"
             sys.stderr.write(message.format(self.pidfile))
             return
-        
+
         try:
             while 1:
                 os.kill(pid, 'SIGTERM')
                 time.sleep(0.1)
         except OSError as err:
             if "No such process" in err.strerror and os.path.exists(self.pidfile):
-                    os.remove(self.pidfile)
+                os.remove(self.pidfile)
             else:
                 print(str(err))
                 sys.exit(1)
 
-    def run(self):   
+    def run(self):
         ''' This method should be restarted in deamon classes '''

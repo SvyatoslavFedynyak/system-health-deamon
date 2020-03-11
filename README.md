@@ -27,7 +27,7 @@ Structure:
 {
     "name": "$function_name",
     "datetime" : "$compose_datetime",
-    [
+    "data" : [
         {
             some data...
         },
@@ -46,12 +46,12 @@ Structure:
 {
     "name": "$worker_name",
     "datetime" : "$compose_datetime",
-    [
+    "function_reports" : [
         {
-            some data...
+            function1 report ...
         },
         {
-            ...
+            function2 report ...
         },
         ...
     ]
@@ -63,14 +63,14 @@ Structure:
 Structure:
 ```json
 {
-    "name": "$worker_name",
+    "name": "Daemon report",
     "datetime" : "$compose_datetime",
-    [
+    "worker_reports" : [
         {
-            some data...
+            worker1 report...
         },
         {
-            ...
+            worker2 report...
         },
         ...
     ]

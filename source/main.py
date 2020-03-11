@@ -1,6 +1,6 @@
 import modules.manager as manager_module
-import modules.logger as logger
+import modules.logger as logger_module
 
 manager = manager_module.Manager()
-with open('deamon_report.json', 'w') as file:
-    file.write(manager.run())
+logger = logger_module.Logger('log.log', '/dev/null')
+logger.run(manager.run())
