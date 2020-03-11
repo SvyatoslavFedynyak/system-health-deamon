@@ -6,7 +6,7 @@ import atexit
 DEFAULT_STD = '/dev/null'
 
 
-class AbstractDeamon():
+class AbstractDaemon():
     '''Class for main deamon process'''
 
     def __init__(self,
@@ -49,7 +49,7 @@ class AbstractDeamon():
             os.dup2(sys_input.fileno(), sys.stdin.fileno())
         with open(self.stdout, 'a+') as sys_output:
             os.dup2(sys_output.fileno(), sys.stdout.fileno())
-        with open(self.stderr, 'a+', 0) as sys_error:
+        with open(self.stderr, 'a+') as sys_error:
             os.dup2(sys_error.fileno(), sys.stderr.fileno())
 
         atexit.register(self.delpid)
@@ -108,3 +108,4 @@ class AbstractDeamon():
 
     def run(self):
         ''' This method should be restarted in deamon classes '''
+        raise NotImplementedError
