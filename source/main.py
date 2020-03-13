@@ -1,15 +1,18 @@
 import modules.deamon as daemon
 import sys
+import os
 
 if __name__ == '__main__':
+    env_path = os.path.abspath('.')
+
     if len(sys.argv) < 2:
         print("Usage: {0} start|stop|restart".format(sys.argv[0]))
         sys.exit(2)
 
-    daemon = daemon.CollectorDaemon(pidfile='tmp/daemon.pid',
+    daemon = daemon.CollectorDaemon(pidfile= env_path + '/tmp/daemon.pid',
                                     stdin='/dev/null',
-                                    stdout='tmp/output.log',
-                                    stderr='tmp/error.log')
+                                    stdout= env_path + '/tmp/output.log',
+                                    stderr= env_path + '/tmp/error.log')
     if sys.argv[1] == 'start':
         daemon.start()
     elif sys.argv[1] == 'stop':

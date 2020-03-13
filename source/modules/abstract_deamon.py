@@ -5,7 +5,6 @@ import atexit
 
 DEFAULT_STD = '/dev/null'
 
-
 class AbstractDaemon():
     '''Class for main deamon process'''
 
@@ -21,6 +20,7 @@ class AbstractDaemon():
 
     def deamonize(self):
         '''Main method for running deamon'''
+        
         try:
             pid = os.fork()
             if pid > 0:
