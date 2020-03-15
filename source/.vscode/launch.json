@@ -26,5 +26,13 @@
             "console": "integratedTerminal",
             "args": ["start"]
         },
+        {
+            "name": "Python: main.py stop",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["stop"]
+        }
     ]
 }

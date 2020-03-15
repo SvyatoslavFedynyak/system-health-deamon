@@ -2,6 +2,7 @@ import os
 import sys
 import time
 import atexit
+import signal
 
 DEFAULT_STD = '/dev/null'
 
@@ -97,7 +98,7 @@ class AbstractDaemon():
 
         try:
             while 1:
-                os.kill(pid, 'SIGTERM')
+                os.kill(pid, signal.SIGTERM)
                 time.sleep(0.1)
         except OSError as err:
             if "No such process" in err.strerror and os.path.exists(self.pidfile):

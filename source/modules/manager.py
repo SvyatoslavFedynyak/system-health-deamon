@@ -36,7 +36,7 @@ class Manager:
     def run(self):
         '''Run all workers async, get report from result and add put it into dict'''
         # define event loop and tasks list
-        ioloop = asyncio.get_event_loop()
+        ioloop = asyncio.new_event_loop()
         tasks = []
 
         # compose workers as tasks to event loop
