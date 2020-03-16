@@ -15,8 +15,7 @@ def load_config(path):
                     config_dict[pair[0]] = pair[1]
     return config_dict
 
-if __name__ == '__main__':
-
+def main():
     env_path = os.path.abspath(os.path.dirname(''))
 
     # Argument parser
@@ -37,16 +36,16 @@ if __name__ == '__main__':
     output_path = os.path.abspath(os.path.join(root_dir, config['output_log']))
     error_path = os.path.abspath(os.path.join(root_dir, config['error_log']))
 
-    daemon = daemon.CollectorDaemon(pidfile=pid_path,
+    daemon_obj = daemon.CollectorDaemon(pidfile=pid_path,
                                     stdin='/dev/null',
                                     stdout=output_path,
                                     stderr=error_path)
     if args.command == 'start':
-        daemon.start()
+        daemon_obj.start()
     elif args.command == 'stop':
-        daemon.stop()
+        daemon_obj.stop()
     elif args.command == 'restart':
-        daemon.restart()
+        daemon_obj.restart()
     else:
         print(args.help)
         sys.exit(2)
