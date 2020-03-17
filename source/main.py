@@ -16,7 +16,6 @@ def load_config(path):
     return config_dict
 
 def main():
-    env_path = os.path.abspath(os.path.dirname(''))
 
     # Argument parser
     parser = argparse.ArgumentParser()
@@ -28,18 +27,10 @@ def main():
     if args.config:
         config_path = args.config
     else:
-        config_path = os.path.abspath(os.path.join(env_path, '..', 'config', 'daemon.cfg'))
+        config_path = os.path.abspath(os.path.join('/etc', 'daemon', 'daemon.cfg'))
     config = load_config(config_path)
 
-    root_dir = config['root_dir']
-    pid_path = os.path.abspath(os.path.join(root_dir, config['pid_path']))
-    output_path = os.path.abspath(os.path.join(root_dir, config['output_log']))
-    error_path = os.path.abspath(os.path.join(root_dir, config['error_log']))
-
-    daemon_obj = daemon.CollectorDaemon(pidfile=pid_path,
-                                    stdin='/dev/null',
-                                    stdout=output_path,
-                                    stderr=error_path)
+    daemon_obj = daemon.CollectorDaemon(config)
     if args.command == 'start':
         daemon_obj.start()
     elif args.command == 'stop':
@@ -49,3 +40,6 @@ def main():
     else:
         print(args.help)
         sys.exit(2)
+
+if __name__ == "__main__":
+    main()

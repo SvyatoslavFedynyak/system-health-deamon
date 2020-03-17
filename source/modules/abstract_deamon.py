@@ -14,6 +14,7 @@ class AbstractDaemon():
                  stdin=DEFAULT_STD,
                  stdout=DEFAULT_STD,
                  stderr=DEFAULT_STD):
+        
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr

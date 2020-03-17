@@ -9,11 +9,10 @@ class CollectorDaemon(deamon.AbstractDaemon):
     '''Class for daemon which will be doing all the stuff'''
 
     def __init__(self,
-                 pidfile,
-                 stdin=DEFAULT_STD,
-                 stdout=DEFAULT_STD,
-                 stderr=DEFAULT_STD):
-        deamon.AbstractDaemon.__init__(self, pidfile, stdin, stdout, stderr)
+                 config):
+        
+        deamon.AbstractDaemon.__init__(self, config['pid_path'], '/dev/null', config['output_log'], config['error_log'])
+        self.interval = config['interval']
         self.manager = manager.Manager()
         self.logger = logger.Logger(self.stdout, self.stderr)
 
@@ -21,4 +20,4 @@ class CollectorDaemon(deamon.AbstractDaemon):
     def run(self):
         while True:
             self.logger.run(self.manager.run())
-            time.sleep(10)
+            time.sleep(self.interval)
