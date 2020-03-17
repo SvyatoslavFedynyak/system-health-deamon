@@ -27,7 +27,7 @@ def main():
     if args.config:
         config_path = args.config
     else:
-        config_path = os.path.abspath(os.path.join('/etc', 'daemon', 'daemon.cfg'))
+        config_path = os.path.abspath(os.path.join('/etc', 'system-health-daemon', 'daemon.cfg'))
     config = load_config(config_path)
 
     daemon_obj = daemon.CollectorDaemon(config)

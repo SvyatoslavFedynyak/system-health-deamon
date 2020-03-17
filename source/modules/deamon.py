@@ -20,4 +20,4 @@ class CollectorDaemon(deamon.AbstractDaemon):
     def run(self):
         while True:
             self.logger.run(self.manager.run())
-            time.sleep(self.interval)
+            time.sleep(int(self.interval))
