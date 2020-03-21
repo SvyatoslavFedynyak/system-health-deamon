@@ -5,12 +5,20 @@ Linux daemon, written on python that works with system health
 
 - [system-health-daemon](#system-health-daemon)
   - [Content](#content)
+  - [Requirements](#requirements)
   - [Reports specification](#reports-specification)
     - [Function report](#function-report)
     - [Worker report](#worker-report)
     - [Daemon report](#daemon-report)
   - [Daemon requirements (due to PEP 3143):](#daemon-requirements-due-to-pep-3143)
   - [Primary architecture](#primary-architecture)
+
+## Requirements
+
+- python3.8 
+- python3-pip 
+- python3.8-dev 
+- python3-distutils
 
 ## Reports specification
 

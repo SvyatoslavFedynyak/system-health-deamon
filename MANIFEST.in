@@ -1,1 +1,2 @@
-recursive-include source/config/*
+recursive-include source/config *.cfg *.service
+include requirements.txt

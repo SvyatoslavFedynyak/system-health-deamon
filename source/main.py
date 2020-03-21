@@ -1,7 +1,11 @@
-import modules.deamon as daemon
 import argparse
 import sys
 import os
+
+sys.path.append(os.path.dirname(__file__))
+
+import modules.deamon as daemon
+
 
 def load_config(path):
     '''Loads config from file'''

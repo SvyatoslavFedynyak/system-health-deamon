@@ -17,18 +17,25 @@ class PostInstallCommand(install.install):
         if not os.path.exists(log_dir):
             os.mkdir(log_dir)
         shutil.copy(os.path.join('source', 'config', 'daemon.cfg'), os.path.join('/etc', 'system-health-daemon', 'daemon.cfg'))
+        unit_file = os.path.join('/lib', 'systemd', 'system', 'system-health-daemon.service')
+        shutil.copy(os.path.join('source', 'config', 'systemd-unit.service'), unit_file)
+        os.chown(unit_file, 0, 0)
 
 
 setuptools.setup(
+
+    # Package metadata
     name='system-health-daemon',
     version='1.0',
     description='System Health Daemon',
     author='Svyatoslav Fedynyak',
+    author_email='svyatoslav912@gmail.com',
+    url='https://github.com/SvyatoslavFedynyak/system-health-deamon',
+
     python_requires='~=3.8',
     packages=setuptools.find_packages(),
     install_requires=required,
     include_package_data=True,
-    url='https://github.com/SvyatoslavFedynyak/system-health-deamon',
     cmdclass={
         'install': PostInstallCommand
     },
