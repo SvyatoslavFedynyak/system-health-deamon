@@ -33,6 +33,13 @@
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
             "args": ["stop"]
-        }
+        },
+        {
+            "name": "Python: non-daemon mode",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/dev/non_deamon_run.py",
+            "console": "integratedTerminal"
+        },
     ]
 }

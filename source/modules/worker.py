@@ -35,6 +35,8 @@ class Worker:
 
     def run(self):
         '''Invokes required functions and returns report'''
+        self.func_reports.clear()
+        self.worker_report = ''
         for func in self.funcs:
             self.func_reports.append(func())
         return self.compose_report(self.func_reports)

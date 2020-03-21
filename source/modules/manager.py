@@ -38,6 +38,7 @@ class Manager:
         # define event loop and tasks list
         ioloop = asyncio.new_event_loop()
         tasks = []
+        self.reports.clear()
 
         # compose workers as tasks to event loop
         for worker_taks in self.workers:
