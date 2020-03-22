@@ -1,6 +1,7 @@
 # Custom
 test/
 tmp/
+deb/pkg/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

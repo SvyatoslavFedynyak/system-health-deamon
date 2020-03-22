@@ -1,7 +1,7 @@
 import os
 import shutil
 import setuptools
-import setuptools.command.install as install
+import setuptools.command.develop as develop
 
 CONFIG_DIR = os.path.join('/etc', 'system-health-daemon')
 LOG_DIR = os.path.join('/var', 'log', 'system-health-daemon')
@@ -11,10 +11,10 @@ SERVICE_PATH = os.path.join('/lib', 'systemd', 'system', 'system-health-daemon.s
 with open('requirements.txt') as f:
     required = f.read().splitlines()
 
-class PostInstallCommand(install.install):
+class PostDevelopCommand(develop.develop):
     """Make dirs for config and log"""
     def run(self):
-        install.install.run(self)
+        develop.develop.run(self)
         if not os.path.exists(CONFIG_DIR):
             os.mkdir(CONFIG_DIR)
         if not os.path.exists(LOG_DIR):
@@ -45,7 +45,7 @@ setuptools.setup(
     install_requires=required,
     include_package_data=True,
     cmdclass={
-        'install': PostInstallCommand
+        'develop': PostDevelopCommand
     },
     entry_points={
         'console_scripts':
