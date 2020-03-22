@@ -7,3 +7,7 @@ PIDFile=/var/run/system-health-daemon.pid
 ExecStart=/usr/local/bin/system-health-daemon start
 ExecStop=/usr/local/bin/system-health-daemon stop
 ExecReload=/usr/local/bin/system-health-daemon restart
+User=root
+
+[Install]
+WantedBy=multi-user.target

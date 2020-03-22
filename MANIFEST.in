@@ -1,2 +1,2 @@
-recursive-include source/config *.cfg *.service
+recursive-include system_health_daemon/config *.cfg *.service
 include requirements.txt
