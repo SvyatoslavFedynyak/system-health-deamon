@@ -5,6 +5,7 @@ Linux daemon, written on python that works with system health
 
 - [system-health-daemon](#system-health-daemon)
   - [Content](#content)
+  - [Install](#install)
   - [Requirements](#requirements)
   - [Reports specification](#reports-specification)
     - [Function report](#function-report)
@@ -12,6 +13,16 @@ Linux daemon, written on python that works with system health
     - [Daemon report](#daemon-report)
   - [Daemon requirements (due to PEP 3143):](#daemon-requirements-due-to-pep-3143)
   - [Primary architecture](#primary-architecture)
+
+## Install 
+
+```bash
+git clone https://github.com/SvyatoslavFedynyak/system-health-deamon.git
+cd system-health-daemon
+sudo ./buildDeb.sh
+sudo dpkg -i deb/pkg/system_health_daemon-1.0.deb
+sudo systemctl start system-health-daemon
+```
 
 ## Requirements
 
