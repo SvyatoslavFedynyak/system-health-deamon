@@ -1,0 +1,8 @@
+Package: system-health-daemon
+Version: 1.0-1
+Section: python
+Priority: optional
+Architecture: amd64
+Depends: python3.8, python3-pip, python3.8-dev, python3-distutils
+Maintainer: Svyatoslav Fedynyak
+Description: System Health Daemon
