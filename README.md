@@ -5,16 +5,23 @@ Linux daemon, written on python that works with system health
 
 - [system-health-daemon](#system-health-daemon)
   - [Content](#content)
-  - [Install](#install)
-  - [Requirements](#requirements)
-  - [Reports specification](#reports-specification)
-    - [Function report](#function-report)
-    - [Worker report](#worker-report)
-    - [Daemon report](#daemon-report)
-  - [Daemon requirements (due to PEP 3143):](#daemon-requirements-due-to-pep-3143)
-  - [Primary architecture](#primary-architecture)
+  - [Operations](#operations)
+    - [Install](#install)
+    - [Requirements](#requirements)
+  - [Release](#release)
+    - [Security](#security)
+      - [Bandit utility report](#bandit-utility-report)
+  - [Architecture](#architecture)
+    - [Primary architecture](#primary-architecture)
+    - [Reports specification](#reports-specification)
+      - [Function report](#function-report)
+      - [Worker report](#worker-report)
+      - [Daemon report](#daemon-report)
+    - [Daemon requirements (due to PEP 3143):](#daemon-requirements-due-to-pep-3143)
 
-## Install 
+## Operations
+
+### Install 
 
 ```bash
 git clone https://github.com/SvyatoslavFedynyak/system-health-deamon.git
@@ -23,15 +30,32 @@ sudo ./buildDeb.sh
 sudo dpkg -i deb/pkg/system_health_daemon-1.0.deb
 sudo systemctl start system-health-daemon
 ```
-
-## Requirements
+### Requirements
 
 - python3.8 
 - python3-pip 
 - python3.8-dev 
 - python3-distutils
 
-## Reports specification
+## Release
+
+Every release has it own tag withing GitHub
+
+### Security
+
+#### Bandit utility report
+
+Every release has it Bandit scanner report
+
+![Bandit report](https://github.com/SvyatoslavFedynyak/system-health-deamon/blob/master/images/bandit-report-1.0.jpg)
+
+## Architecture
+
+### Primary architecture
+
+![Primary architecture](https://github.com/SvyatoslavFedynyak/system-health-deamon/blob/master/images/deamon-arch.jpg)
+
+### Reports specification
 
 Application operates 3 types of json reports:
 
@@ -39,7 +63,7 @@ Application operates 3 types of json reports:
 - [Worker report](#worker-report)
 - [Daemon report](#daemon-report)
 
-### Function report
+#### Function report
 
 Structure:
 ```json
@@ -58,7 +82,7 @@ Structure:
 }
 ```
 
-### Worker report
+#### Worker report
 
 Structure:
 ```json
@@ -77,7 +101,7 @@ Structure:
 }
 ```
 
-### Daemon report
+#### Daemon report
 
 Structure:
 ```json
@@ -96,7 +120,7 @@ Structure:
 }
 ```
 
-## Daemon requirements (due to PEP 3143):
+### Daemon requirements (due to PEP 3143):
 
 - Close all open file descriptors.
 - Change current working directory.
@@ -113,8 +137,3 @@ Correctly handle the following circumstances:
 - Daemon termination by SIGTERM signal.
 - Children generate SIGCLD signal.
 
-
-
-## Primary architecture
-
-![Primary architecture](https://github.com/SvyatoslavFedynyak/system-health-deamon/blob/master/images/deamon-arch.jpg)
