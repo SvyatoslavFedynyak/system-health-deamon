@@ -1,8 +1,8 @@
 #!/bin/bash
 set -x
 
-CUR_DIR=$(pwd)
-if [[ $CUR_DIR != 'system-health-deamon' ]];then
+CUR_DIR=$(basename $(pwd))
+if [[ $CUR_DIR != "system-health-deamon" ]];then
     echo "This script should be run from project's root directory"
     exit 1
 fi

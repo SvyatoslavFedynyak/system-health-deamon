@@ -25,8 +25,8 @@ Linux daemon, written on python that works with system health
 
 ```bash
 git clone https://github.com/SvyatoslavFedynyak/system-health-deamon.git
-cd system-health-daemon
-sudo ./buildDeb.sh
+cd system-health-deamon
+sudo ./scripts/buildDeb.sh
 sudo dpkg -i deb/pkg/system_health_daemon-1.0.deb
 sudo systemctl start system-health-daemon
 ```
