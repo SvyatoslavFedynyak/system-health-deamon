@@ -1,6 +1,8 @@
 # system-health-daemon
 Linux daemon, written on python that works with system health
 
+**Version 1.0**
+
 ## Content
 
 - [system-health-daemon](#system-health-daemon)
