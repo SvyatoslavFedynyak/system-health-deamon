@@ -1,4 +1,5 @@
 #!/bin/bash
 
 systemctl stop system-health-daemon
+rm -rf /var/log/system-health-daemon/
 python3.8 -m pip uninstall -y system_health_daemon

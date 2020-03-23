@@ -5,6 +5,7 @@ make build
 
 VERSION=1.0
 
+mkdir deb/pkg
 TEMPLATE_DIR=deb/system_health_daemon_template
 DEB_DIR=deb/pkg/system_health_daemon-$VERSION
 rm -rf $DEB_DIR
