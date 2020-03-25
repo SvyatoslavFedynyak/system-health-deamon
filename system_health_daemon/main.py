@@ -7,19 +7,6 @@ sys.path.append(os.path.dirname(__file__))
 
 import modules.deamon as daemon
 
-
-def load_config(path):
-    """Loads config from file"""
-    config_dict = {}
-    with open(path, 'r') as fp:
-        for line in fp.read().splitlines():
-            line = line.rstrip()
-            if line != '':
-                if line[0] != '#':
-                    pair = line.split('=')
-                    config_dict[pair[0]] = pair[1]
-    return config_dict
-
 def main():
 
     # Argument parser
