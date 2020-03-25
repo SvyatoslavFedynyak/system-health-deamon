@@ -1,3 +1,4 @@
+import configparser
 import argparse
 import sys
 import os
@@ -8,7 +9,7 @@ import modules.deamon as daemon
 
 
 def load_config(path):
-    '''Loads config from file'''
+    """Loads config from file"""
     config_dict = {}
     with open(path, 'r') as fp:
         for line in fp.read().splitlines():
@@ -28,13 +29,17 @@ def main():
     args = parser.parse_args()
 
     # Get app paths and parse config file
+    config = configparser.ConfigParser()
     if args.config:
         config_path = args.config
     else:
         config_path = os.path.abspath(os.path.join('/etc', 'system-health-daemon', 'daemon.cfg'))
-    config = load_config(config_path)
 
-    daemon_obj = daemon.CollectorDaemon(config)
+    with open(config_path, 'r') as file:
+        config.read_file(file)
+    
+    daemon_obj = daemon.CollectorDaemon(config['Collector'])
+    
     if args.command == 'start':
         daemon_obj.start()
     elif args.command == 'stop':

@@ -12,8 +12,8 @@ def main():
     output = os.path.join(SOURCE_DIR, 'tmp/output.log')
     error = os.path.join(SOURCE_DIR, 'tmp/error.log')
     
-    open(output, 'w').close()
-    open(error, 'w').close()
+    open(output, 'w+').close()
+    open(error, 'w+').close()
 
     config['pid_path'] = os.path.join(SOURCE_DIR, 'tmp/daemon.pid')
     config['output_log'] = output

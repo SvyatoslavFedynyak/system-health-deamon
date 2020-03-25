@@ -24,7 +24,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
-            "args": ["start", "-c", "../config/daemon.cfg"]
+            "args": ["start", "-c", "config/daemon.cfg"]
         },
         {
             "name": "Python: main.py stop",

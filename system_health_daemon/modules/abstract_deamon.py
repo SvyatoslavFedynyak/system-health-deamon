@@ -1,3 +1,5 @@
+"""This module implements realization of abstract daemon"""
+
 import os
 import sys
 import time
@@ -7,7 +9,7 @@ import signal
 DEFAULT_STD = '/dev/null'
 
 class AbstractDaemon():
-    '''Class for main deamon process'''
+    """Class for main deamon process"""
 
     def __init__(self,
                  pidfile,
@@ -21,7 +23,7 @@ class AbstractDaemon():
         self.pidfile = pidfile
 
     def deamonize(self):
-        '''Main method for running deamon'''
+        """Main method for running deamon"""
         
         try:
             pid = os.fork()
@@ -60,7 +62,7 @@ class AbstractDaemon():
             pidf.write("{0}\n".format(pid))
 
     def delpid(self):
-        '''Removes PID file'''
+        """Removes PID file"""
         os.remove(self.pidfile)
 
     def restart(self):
@@ -69,7 +71,7 @@ class AbstractDaemon():
         self.start()
 
     def start(self):
-        '''Starts the deamon'''
+        """Starts the deamon"""
         try:
             with open(self.pidfile, 'r') as pidf:
                 pid = int(pidf.read().strip())
@@ -98,7 +100,7 @@ class AbstractDaemon():
             return
 
         try:
-            while 1:
+            while 50:
                 os.kill(pid, signal.SIGTERM)
                 time.sleep(0.1)
         except OSError as err:
@@ -109,5 +111,5 @@ class AbstractDaemon():
                 sys.exit(1)
 
     def run(self):
-        ''' This method should be restarted in deamon classes '''
+        """ This method should be re-implemented in deamon classes """
         raise NotImplementedError

@@ -1,10 +1,12 @@
+"""This module implements realization of CPU data collecting functions"""
+
 import psutil
 import json
 import datetime
 
 
 def CPU_currentTimes():
-    '''Return current CPU time values'''
+    """Return current CPU time values"""
     raw = psutil.cpu_times(True)
     raw_result = {}
     cpu_dict = {}
@@ -18,7 +20,7 @@ def CPU_currentTimes():
     return json.dumps(raw_result, indent='\t')
 
 def CPU_timePercentage():
-    '''Return CPU time percentage values'''
+    """Return CPU time percentage values"""
     raw = psutil.cpu_times_percent(0.1, True)
     raw_result = {}
     cpu_dict = {}
@@ -32,7 +34,7 @@ def CPU_timePercentage():
     return json.dumps(raw_result, indent='\t')
 
 def CPU_stats():
-    '''Return CPU time percentage values'''
+    """Return CPU time percentage values"""
     freq = psutil.cpu_freq(True)
     stat = psutil.cpu_stats()
     phys_cpu = psutil.cpu_count(False)
@@ -57,7 +59,7 @@ def CPU_stats():
     return json.dumps(raw_result, indent='\t')
 
 def CPU_avgLoad():
-    '''Return CPU time percentage values'''
+    """Return CPU time percentage values"""
     raw = psutil.getloadavg()
     raw_result = {}
     data_dict = {}

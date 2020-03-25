@@ -1,10 +1,12 @@
+"""This module implements realization of collctor's worker"""
+
 import re
 import json
 import datetime
 
 
 class Worker:
-    '''Class for worker'''
+    """Class for worker"""
 
     name = ''
     funcs = []
@@ -16,14 +18,14 @@ class Worker:
         self.get_funcs(module)
 
     def get_funcs(self, module):
-        '''Get worker's functions from modules'''
+        """Get worker's functions from modules"""
         for item in dir(module):
             func = getattr(module, item)
             if callable(func) and re.match('^{0}'.format(self.name), func.__name__):
                 self.funcs.append(func)
 
     def compose_report(self, reports):
-        '''Get list of func's reports and compose worker's report (json-formated string) from them'''
+        """Get list of func's reports and compose worker's report (json-formated string) from them"""
         report = {}
         report['name'] = self.name
         report['datetime'] = str(datetime.datetime.now())
@@ -34,7 +36,7 @@ class Worker:
         return json.dumps(report, indent='\t')
 
     def run(self):
-        '''Invokes required functions and returns report'''
+        """Invokes required functions and returns report"""
         self.func_reports.clear()
         self.worker_report = ''
         for func in self.funcs:
